@@ -1,7 +1,7 @@
 import React from 'react';
 
-import FormInput from '../form-nput/form-input.component';
-import CustomButton from '../custom-button/custom-button.component';
+import FormInput from '../form-input/form-input.component.jsx';
+import CustomButton from '../custom-button/custom-button.component.jsx';
 
 import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
 
@@ -38,7 +38,7 @@ class SignUp extends React.Component{
                 confirmPassword: ''
             });
         }catch (error){
-            console.error.(error);
+            console.error(error);
         }
     };
     
