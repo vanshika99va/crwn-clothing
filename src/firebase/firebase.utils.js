@@ -11,6 +11,9 @@ const config = {
     messagingSenderId: "177303686701",
     appId: "1:177303686701:web:617c9409d606a470"
   };
+
+  firebase.initializeApp(config);
+
   export const createUserProfileDocument = async (userAuth , additionalData)=>{
       if (!userAuth) return;
 
@@ -27,20 +30,19 @@ const config = {
                 email,
                 createdAt,
                 ...additionalData
-            })
+            });
           }catch(error){
             console.log('error creating user', error.message);
           }
       }
       return userRef;
-  }
-  firebase.initializeApp(config);
+  };
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
 const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({ promt: 'select account' });
+provider.setCustomParameters({ prompt: 'select account' });
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
 
 export default firebase;
